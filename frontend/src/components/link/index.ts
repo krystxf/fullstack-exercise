@@ -1,1 +1,1 @@
-export { Link } from "@/components/link/Link";
+export { Link } from "@/components/Link/Link";

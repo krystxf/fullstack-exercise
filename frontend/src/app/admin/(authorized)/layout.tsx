@@ -1,7 +1,9 @@
 "use client";
 
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { selectIsAuthenticated } from "@/lib/store";
 
 type Props = {
   children: React.ReactNode;
@@ -10,13 +12,15 @@ type Props = {
 export default function AdminAuthorizedLayout(props: Props) {
   const { children } = props;
 
-  useEffect(() => {
-    const auth = window.localStorage.getItem("auth");
+  const router = useRouter();
 
-    if (!auth) {
-      return redirect("/admin/login");
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+
+  useEffect(() => {
+    if (isAuthenticated === false) {
+      router.push("/admin/login");
     }
-  }, []);
+  }, [isAuthenticated, router]);
 
   return children;
 }

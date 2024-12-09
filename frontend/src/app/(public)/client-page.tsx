@@ -1,0 +1,24 @@
+"use client";
+import { ArticleCard } from "@/components/ArticleCard";
+import { useGetArticlesQuery } from "@/lib/api";
+import type { ArticlesResponse } from "@/lib/api.types";
+
+type Props = {
+  initialData: ArticlesResponse;
+};
+
+export function ClientSideHomePage(props: Props) {
+  const { data = props.initialData } = useGetArticlesQuery();
+
+  return (
+    <>
+      <h1 className="text-4xl font-medium mb-12">Recent articles</h1>
+
+      <div className="flex flex-col gap-8">
+        {data.items.map((article) => (
+          <ArticleCard key={article.articleId} {...article} />
+        ))}
+      </div>
+    </>
+  );
+}
