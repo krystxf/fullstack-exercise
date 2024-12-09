@@ -4,6 +4,8 @@ import type {
   ArticleDetail,
   LoginBody,
   LoginResponse,
+  CreateArticleBody,
+  EditArticleBody,
 } from "@/lib/api.types";
 import { RootState } from "@/lib/store"; // FIXME: circular dependency
 
@@ -45,11 +47,18 @@ export const api = createApi({
         },
       }),
     }),
-    editArticle: builder.mutation<void, string>({
+    editArticle: builder.mutation<void, EditArticleBody>({
       invalidatesTags: ["articles"],
-      query: (id) => ({
+      query: ({ articleId, ...body }) => ({
         method: "PATCH",
-        url: `/articles/${id}`,
+        url: `/articles/${articleId}`,
+        body: JSON.stringify({
+          articleId,
+          ...body,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
       }),
     }),
     deleteArticle: builder.mutation<void, string>({
@@ -57,15 +66,17 @@ export const api = createApi({
       query: (id) => ({
         method: "DELETE",
         url: `/articles/${id}`,
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
       }),
     }),
-    create: builder.mutation({
+    createArticle: builder.mutation<ArticleDetail, CreateArticleBody>({
       invalidatesTags: ["articles"],
-      query: () => ({
-        url: "",
+      query: (body) => ({
+        method: "POST",
+        url: "/articles",
+        body: JSON.stringify(body),
+        headers: {
+          "Content-Type": "application/json",
+        },
       }),
     }),
   }),
@@ -75,5 +86,7 @@ export const {
   useGetArticlesQuery,
   useGetArticleDetailQuery,
   useLoginMutation,
+  useCreateArticleMutation,
+  useEditArticleMutation,
   useDeleteArticleMutation,
 } = api;

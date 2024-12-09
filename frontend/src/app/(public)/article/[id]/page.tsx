@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const res = await serverSideFetchApi(`/articles/${id}`);
 
   if (!res.ok) {
-    return notFound();
+    return {};
   }
 
   const article: ArticleDetail = await res.json();
@@ -46,6 +46,7 @@ export default async function ArticleDetailPage({ params }: Props) {
         updatedAt={article.lastUpdatedAt}
       />
 
+      {article.imageId}
       <div className="relative w-full max-h-full h-48">
         <Image
           src={getImageUrl(article.imageId)}

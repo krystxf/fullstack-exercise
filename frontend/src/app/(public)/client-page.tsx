@@ -10,6 +10,9 @@ type Props = {
 export function ClientSideHomePage(props: Props) {
   const { data = props.initialData } = useGetArticlesQuery();
 
+  // TODO: RTK query with hydratation
+  // TODO: Infinite scroll
+
   return (
     <>
       <h1 className="text-4xl font-medium mb-12">Recent articles</h1>

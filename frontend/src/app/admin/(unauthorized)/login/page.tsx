@@ -8,6 +8,8 @@ import { useLoginMutation } from "@/lib/api";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { login } from "@/lib/slices/auth.slice";
+import { Button } from "@/components/Button";
+import { Input } from "@/components/Input";
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -55,10 +57,10 @@ export default function AdminLoginPage() {
       >
         <label className="flex flex-col gap-1">
           Username
-          <input
+          <Input
+            required
             type="text"
             name="username"
-            className="border border-neutral-200 rounded-md px-2 py-1 shadow-sm"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
@@ -66,21 +68,16 @@ export default function AdminLoginPage() {
 
         <label className="flex flex-col gap-1">
           Password
-          <input
+          <Input
+            required
             type="password"
             name="password"
-            className="border border-neutral-200 rounded-md px-2 py-1 shadow-sm"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
 
-        <button
-          disabled={isLoading}
-          className="mt-2 bg-indigo-500 hover:bg-indigo-600 active:scale-[0.99] transition-all ease-in-out text-white rounded-md px-4 py-2"
-        >
-          Login
-        </button>
+        <Button disabled={isLoading}>Login</Button>
       </form>
     </>
   );

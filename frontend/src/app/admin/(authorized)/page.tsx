@@ -12,9 +12,9 @@ export default function AdminEditPage() {
     const res = await deleteMutation(articleId);
 
     if (res.error) {
-      toast.success(`Deleted: ${articleTitle}`);
-    } else {
       toast.error("Failed to delete article");
+    } else {
+      toast.success(`Deleted: ${articleTitle}`);
     }
   }
 

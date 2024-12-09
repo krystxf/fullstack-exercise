@@ -2,16 +2,24 @@
 import { serverSideFetchApi } from "@/utils/api.utils";
 import { ClientSideHomePage } from "./client-page";
 import type { ArticlesResponse } from "@/lib/api.types";
+import { Metadata } from "next";
+import { getTitle } from "@/utils/metadata.utils";
 
-// export const metadata: Metadata = {
-//   title: getTitle("Articles"),
-//   description: "Everything about cats",
-// };
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: getTitle("Articles"),
+    description: "Everything about cats",
+  };
+}
 
 export default async function HomePage() {
   const res = await serverSideFetchApi(`/articles`);
 
-  const data: ArticlesResponse = await res.json();
+  try {
+    const data: ArticlesResponse = await res.json();
 
-  return <ClientSideHomePage initialData={data} />;
+    return <ClientSideHomePage initialData={data} />;
+  } catch {
+    return <div>Something went wrong</div>;
+  }
 }

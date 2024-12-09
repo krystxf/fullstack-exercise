@@ -1,3 +1,8 @@
+/**
+ * In real world this would be either generated from schema
+ * or shared between FE & BE
+ */
+
 export type LoginBody = { username: string; password: string };
 
 export type LoginResponse = {
@@ -26,4 +31,15 @@ export type ArticleDetail = {
 
 export type ArticlesResponse = {
   items: ArticleDetail[];
+};
+
+export type CreateArticleBody = {
+  title: string;
+  perex: string;
+  imageId?: string;
+  content: string;
+};
+
+export type EditArticleBody = CreateArticleBody & {
+  articleId: string;
 };

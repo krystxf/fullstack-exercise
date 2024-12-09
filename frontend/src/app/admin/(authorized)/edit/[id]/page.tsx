@@ -1,48 +1,28 @@
-"use client";
+"use server";
 
-import { Link } from "@/components/Link";
-import { useDeleteArticleMutation, useGetArticlesQuery } from "@/lib/api";
-import toast from "react-hot-toast";
+import { PageWithParams } from "@/types/page.types";
+import AdminEditClientPage from "./client-page";
+import { serverSideFetchApi } from "@/utils/api.utils";
+import { notFound } from "next/navigation";
 
-export default function AdminEditPage() {
-  const { data, isLoading } = useGetArticlesQuery();
-  const [deleteMutation] = useDeleteArticleMutation();
+type Props = PageWithParams<{ id: string }>;
 
-  async function handleDeleteArticle(articleId: string, articleTitle: string) {
-    const res = await deleteMutation(articleId);
+export default async function AdminEditPage({ params }: Props) {
+  const { id } = await params;
 
-    if (res.error) {
-      toast.success(`Deleted: ${articleTitle}`);
-    } else {
-      toast.error("Failed to delete article");
-    }
+  const res = await serverSideFetchApi(`/articles/${id}`);
+  const article = await res.json();
+
+  if (!res.ok) {
+    return notFound();
   }
 
   return (
-    <div>
-      {isLoading ? (
-        <div>Loading</div>
-      ) : (
-        data?.items.map((article) => (
-          <div key={article.articleId} className="">
-            <h2 className="font-semibold">{article.title}</h2>
-            <p className="max-w-screen-sm text-ellipsis text-sm text-neutral-700">
-              {article.perex}
-            </p>
-            <div className="flex gap-2">
-              <Link href={`/admin/edit/${article.articleId}`}>Edit</Link>
-              <button
-                onClick={() =>
-                  handleDeleteArticle(article.articleId, article.title)
-                }
-                className="text-red-500"
-              >
-                Delete
-              </button>
-            </div>
-          </div>
-        ))
-      )}
-    </div>
+    <AdminEditClientPage
+      articleId={id}
+      title={article.title}
+      perex={article.perex}
+      content={article.content}
+    />
   );
 }

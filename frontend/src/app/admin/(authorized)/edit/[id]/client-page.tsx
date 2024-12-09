@@ -1,44 +1,59 @@
 "use client";
+
 import { Button } from "@/components/Button";
 import { Input, inputClassName } from "@/components/Input";
-import { useCreateArticleMutation } from "@/lib/api";
-import Head from "next/head";
+import { useEditArticleMutation, useDeleteArticleMutation } from "@/lib/api";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import toast from "react-hot-toast";
 
-export default function AdminCreatePage() {
-  const router = useRouter();
-  const [createArticleMutation] = useCreateArticleMutation();
+type Props = {
+  articleId: string;
+  title: string;
+  perex: string;
+  content: string;
+};
 
-  const [title, setTitle] = useState("");
-  const [perex, setPerex] = useState("");
-  const [content, setContent] = useState("");
+export default function AdminEditClientPage(props: Props) {
+  const router = useRouter();
+  const [editArticleMutation] = useEditArticleMutation();
+  const [deleteMutation] = useDeleteArticleMutation();
+
+  const [title, setTitle] = useState(props.title);
+  const [perex, setPerex] = useState(props.perex);
+  const [content, setContent] = useState(props.content);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    const res = await createArticleMutation({
+    const res = await editArticleMutation({
+      articleId: props.articleId,
       title,
       perex,
       content,
     });
 
     if (res.error) {
-      toast.error("Failed to create article");
+      toast.error("Failed to update article");
     } else {
-      toast.success("Article created");
+      toast.success("Article updated");
+    }
+  }
 
-      router.push(`/admin/edit/${res.data.articleId}`);
+  async function handleDeleteArticle() {
+    const res = await deleteMutation(props.articleId);
+    console.log(res);
+
+    if (res.error) {
+      toast.error("Failed to delete article");
+    } else {
+      toast.success(`Deleted: ${props.title}`);
+      router.push("/admin");
     }
   }
 
   return (
     <>
-      <Head>
-        <title>Create article</title>
-      </Head>
-
       <h1 className="text-4xl font-medium mb-12">Create article</h1>
 
       <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
@@ -67,13 +82,25 @@ export default function AdminCreatePage() {
           <textarea
             required
             name="content"
-            className={inputClassName}
+            className={inputClassName + " min-h-48"}
             value={content}
             onChange={(e) => setContent(e.target.value)}
           />
         </label>
 
-        <Button>Create</Button>
+        <div className="flex w-full gap-2">
+          <Button type="submit" className="w-full">
+            Update
+          </Button>
+          <Button
+            variant="danger"
+            type="button"
+            onClick={handleDeleteArticle}
+            className="w-full"
+          >
+            Delete
+          </Button>
+        </div>
       </form>
     </>
   );
