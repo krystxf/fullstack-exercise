@@ -1,0 +1,15 @@
+{
+  "name": "applifting-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "pnpm --recursive --parallel run dev",
+    "build": "pnpm --recursive --parallel run build",
+    "lint": "pnpm --recursive --parallel run lint",
+    "start": "pnpm --recursive --parallel run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
