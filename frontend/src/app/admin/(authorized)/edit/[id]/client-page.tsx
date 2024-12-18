@@ -6,6 +6,7 @@ import { useEditArticleMutation, useDeleteArticleMutation } from "@/lib/api";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import toast from "react-hot-toast";
+import { twMerge } from "tailwind-merge";
 
 type Props = {
   articleId: string;
@@ -82,7 +83,7 @@ export default function AdminEditClientPage(props: Props) {
           <textarea
             required
             name="content"
-            className={inputClassName + " min-h-48"}
+            className={twMerge(inputClassName, " min-h-48")}
             value={content}
             onChange={(e) => setContent(e.target.value)}
           />
