@@ -1,5 +1,5 @@
-import { twMerge } from "@/utils/tw-merge.utils";
 import { ButtonHTMLAttributes } from "react";
+import { twMerge } from "tailwind-merge";
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: "primary" | "danger";
