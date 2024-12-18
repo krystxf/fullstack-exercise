@@ -1,0 +1,39 @@
+name: Frontend
+
+on: push
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: |
+          pnpm install
+
+      - name: Lint
+        run: |
+          cd frontend
+          pnpm lint
+
+      - name: Types check
+        run: |
+          cd frontend
+          pnpm types:check
+
+      - name: Format check
+        run: |
+          cd frontend
+          pnpm format:check
