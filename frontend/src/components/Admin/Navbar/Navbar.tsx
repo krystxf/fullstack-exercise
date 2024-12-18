@@ -1,8 +1,9 @@
-import { logout } from "@/lib/slices/auth.slice";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { selectIsAuthenticated } from "@/lib/store";
 import { useDispatch, useSelector } from "react-redux";
+
+import { logout } from "@/lib/slices/auth.slice";
+import { selectIsAuthenticated } from "@/lib/store";
 
 export function AdminNavbar() {
     const router = useRouter();

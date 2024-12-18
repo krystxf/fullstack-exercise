@@ -1,8 +1,9 @@
 "use client";
-import { AdminNavbar } from "@/components/Admin/Navbar";
-import { loadFromLocalStorage } from "@/lib/slices/auth.slice";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+
+import { AdminNavbar } from "@/components/Admin/Navbar";
+import { loadFromLocalStorage } from "@/lib/slices/auth.slice";
 
 type Props = {
     children: React.ReactNode;

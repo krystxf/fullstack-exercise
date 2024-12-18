@@ -1,6 +1,7 @@
-import { getTitle } from "@/utils/metadata.utils";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+
+import { getTitle } from "@/utils/metadata.utils";
 
 export const metadata: Metadata = {
     title: getTitle("Login"),

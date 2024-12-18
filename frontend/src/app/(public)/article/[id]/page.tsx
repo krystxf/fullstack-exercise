@@ -1,12 +1,13 @@
-import { serverSideFetchApi, getImageUrl } from "@/utils/api.utils";
-import { getTitle } from "@/utils/metadata.utils";
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import Image from "next/image";
-import type { PageWithParams } from "@/types/page.types";
+import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
+
 import { ArticleDate } from "@/components/ArticleDate";
 import { ArticleDetail } from "@/lib/api.types";
+import type { PageWithParams } from "@/types/page.types";
+import { getImageUrl, serverSideFetchApi } from "@/utils/api.utils";
+import { getTitle } from "@/utils/metadata.utils";
 
 type Props = PageWithParams<{ id: string }>;
 

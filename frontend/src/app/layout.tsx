@@ -1,8 +1,9 @@
 "use client";
 import "@/styles/global.css";
-import { store } from "@/lib/store";
-import { Provider } from "react-redux";
 import { Toaster } from "react-hot-toast";
+import { Provider } from "react-redux";
+
+import { store } from "@/lib/store";
 
 export default function RootLayout({
     children,

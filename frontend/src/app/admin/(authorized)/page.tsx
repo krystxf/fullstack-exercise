@@ -1,8 +1,9 @@
 "use client";
 
+import toast from "react-hot-toast";
+
 import { Link } from "@/components/Link";
 import { useDeleteArticleMutation, useGetArticlesQuery } from "@/lib/api";
-import toast from "react-hot-toast";
 
 export default function AdminEditPage() {
     const { data, isLoading } = useGetArticlesQuery();

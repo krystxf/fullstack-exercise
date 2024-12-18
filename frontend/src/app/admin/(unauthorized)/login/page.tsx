@@ -1,13 +1,14 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useLoginMutation } from "@/lib/api";
+import { type SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
-import { login } from "@/lib/slices/auth.slice";
+
 import { Button } from "@/components/Button";
 import { Input } from "@/components/Input";
-import { useForm, type SubmitHandler } from "react-hook-form";
+import { useLoginMutation } from "@/lib/api";
+import { login } from "@/lib/slices/auth.slice";
 
 type Inputs = {
     username: string;

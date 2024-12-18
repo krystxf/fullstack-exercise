@@ -1,6 +1,7 @@
+import type { MetadataRoute } from "next";
+
 import { ArticlesResponse } from "@/lib/api.types";
 import { serverSideFetchApi } from "@/utils/api.utils";
-import type { MetadataRoute } from "next";
 
 // NOTE: sitemap for better SEO
 

@@ -1,7 +1,8 @@
-import { getImageUrl } from "@/utils/api.utils";
 import Image from "next/image";
-import { Link } from "@/components/Link";
+
 import { ArticleDate } from "@/components/ArticleDate";
+import { Link } from "@/components/Link";
+import { getImageUrl } from "@/utils/api.utils";
 
 type Props = {
     articleId: string;

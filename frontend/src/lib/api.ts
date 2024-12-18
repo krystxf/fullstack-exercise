@@ -1,11 +1,12 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+
 import type {
-    ArticlesResponse,
     ArticleDetail,
-    LoginBody,
-    LoginResponse,
+    ArticlesResponse,
     CreateArticleBody,
     EditArticleBody,
+    LoginBody,
+    LoginResponse,
 } from "@/lib/api.types";
 import { RootState } from "@/lib/store"; // FIXME: circular dependency
 

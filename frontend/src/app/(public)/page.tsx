@@ -1,8 +1,10 @@
 "use server";
-import { serverSideFetchApi } from "@/utils/api.utils";
-import { ClientSideHomePage } from "./client-page";
-import type { ArticlesResponse } from "@/lib/api.types";
 import { Metadata } from "next";
+
+import { ClientSideHomePage } from "./client-page";
+
+import type { ArticlesResponse } from "@/lib/api.types";
+import { serverSideFetchApi } from "@/utils/api.utils";
 import { getTitle } from "@/utils/metadata.utils";
 
 export async function generateMetadata(): Promise<Metadata> {

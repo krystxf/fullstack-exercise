@@ -1,6 +1,7 @@
-import styles from "./not-found.module.css";
-import Link from "next/link";
 import { ChevronRightIcon } from "@heroicons/react/24/solid";
+import Link from "next/link";
+
+import styles from "./not-found.module.css";
 
 export default function NotFound() {
     return (

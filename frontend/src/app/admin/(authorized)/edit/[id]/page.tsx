@@ -1,9 +1,11 @@
 "use server";
 
-import { PageWithParams } from "@/types/page.types";
-import AdminEditClientPage from "./client-page";
-import { serverSideFetchApi } from "@/utils/api.utils";
 import { notFound } from "next/navigation";
+
+import AdminEditClientPage from "./client-page";
+
+import { PageWithParams } from "@/types/page.types";
+import { serverSideFetchApi } from "@/utils/api.utils";
 
 type Props = PageWithParams<{ id: string }>;
 

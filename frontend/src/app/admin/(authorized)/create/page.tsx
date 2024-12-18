@@ -1,11 +1,12 @@
 "use client";
-import { Button } from "@/components/Button";
-import { Input, inputClassName } from "@/components/Input";
-import { useCreateArticleMutation } from "@/lib/api";
 import Head from "next/head";
 import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+
+import { Button } from "@/components/Button";
+import { Input, inputClassName } from "@/components/Input";
+import { useCreateArticleMutation } from "@/lib/api";
 
 type Inputs = {
     title: string;

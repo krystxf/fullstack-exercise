@@ -1,5 +1,6 @@
-import { LocalStorageKeys } from "@/enums/local-storage-keys.enum";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+import { LocalStorageKeys } from "@/enums/local-storage-keys.enum";
 
 type AuthState = {
     accessToken?: string;
