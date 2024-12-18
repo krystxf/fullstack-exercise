@@ -5,16 +5,16 @@ import { Provider } from "react-redux";
 import { Toaster } from "react-hot-toast";
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body>
-        <Toaster />
-        <Provider store={store}>{children}</Provider>
-      </body>
-    </html>
-  );
+    return (
+        <html lang="en">
+            <body>
+                <Toaster />
+                <Provider store={store}>{children}</Provider>
+            </body>
+        </html>
+    );
 }

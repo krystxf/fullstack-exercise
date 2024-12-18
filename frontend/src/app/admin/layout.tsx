@@ -5,25 +5,25 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 type Props = {
-  children: React.ReactNode;
+    children: React.ReactNode;
 };
 
 export default function AdminLayout(props: Props) {
-  const { children } = props;
+    const { children } = props;
 
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(loadFromLocalStorage());
-  }, [dispatch]);
+    useEffect(() => {
+        dispatch(loadFromLocalStorage());
+    }, [dispatch]);
 
-  return (
-    <>
-      <AdminNavbar />
+    return (
+        <>
+            <AdminNavbar />
 
-      <div className="flex min-h-screen w-full justify-center px-8 py-4">
-        <main className="w-full max-w-screen-lg">{children}</main>
-      </div>
-    </>
-  );
+            <div className="flex min-h-screen w-full justify-center px-8 py-4">
+                <main className="w-full max-w-screen-lg">{children}</main>
+            </div>
+        </>
+    );
 }

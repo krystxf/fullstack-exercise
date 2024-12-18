@@ -11,53 +11,53 @@ import { ArticleDetail } from "@/lib/api.types";
 type Props = PageWithParams<{ id: string }>;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { id } = await params;
+    const { id } = await params;
 
-  const res = await serverSideFetchApi(`/articles/${id}`);
+    const res = await serverSideFetchApi(`/articles/${id}`);
 
-  if (!res.ok) {
-    return {};
-  }
+    if (!res.ok) {
+        return {};
+    }
 
-  const article: ArticleDetail = await res.json();
+    const article: ArticleDetail = await res.json();
 
-  return {
-    title: getTitle(article.title),
-    description: article.perex,
-  };
+    return {
+        title: getTitle(article.title),
+        description: article.perex,
+    };
 }
 
 export default async function ArticleDetailPage({ params }: Props) {
-  const { id } = await params;
+    const { id } = await params;
 
-  const res = await serverSideFetchApi(`/articles/${id}`);
+    const res = await serverSideFetchApi(`/articles/${id}`);
 
-  if (!res.ok) {
-    return notFound();
-  }
+    if (!res.ok) {
+        return notFound();
+    }
 
-  const article: ArticleDetail = await res.json();
+    const article: ArticleDetail = await res.json();
 
-  return (
-    <>
-      <h1 className="text-3xl font-medium">{article.title}</h1>
-      <ArticleDate
-        createdAt={article.createdAt}
-        updatedAt={article.lastUpdatedAt}
-      />
+    return (
+        <>
+            <h1 className="text-3xl font-medium">{article.title}</h1>
+            <ArticleDate
+                createdAt={article.createdAt}
+                updatedAt={article.lastUpdatedAt}
+            />
 
-      {article.imageId}
-      <div className="relative h-48 max-h-full w-full">
-        <Image
-          src={getImageUrl(article.imageId)}
-          alt={`Image for article: ${article.title}`}
-          priority
-          fill
-          objectFit="scale-down"
-        />
-      </div>
+            {article.imageId}
+            <div className="relative h-48 max-h-full w-full">
+                <Image
+                    src={getImageUrl(article.imageId)}
+                    alt={`Image for article: ${article.title}`}
+                    priority
+                    fill
+                    objectFit="scale-down"
+                />
+            </div>
 
-      <ReactMarkdown>{article.content}</ReactMarkdown>
-    </>
-  );
+            <ReactMarkdown>{article.content}</ReactMarkdown>
+        </>
+    );
 }

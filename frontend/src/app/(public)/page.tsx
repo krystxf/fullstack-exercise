@@ -6,20 +6,20 @@ import { Metadata } from "next";
 import { getTitle } from "@/utils/metadata.utils";
 
 export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: getTitle("Articles"),
-    description: "Everything about cats",
-  };
+    return {
+        title: getTitle("Articles"),
+        description: "Everything about cats",
+    };
 }
 
 export default async function HomePage() {
-  const res = await serverSideFetchApi(`/articles`);
+    const res = await serverSideFetchApi(`/articles`);
 
-  try {
-    const data: ArticlesResponse = await res.json();
+    try {
+        const data: ArticlesResponse = await res.json();
 
-    return <ClientSideHomePage initialData={data} />;
-  } catch {
-    return <div>Something went wrong</div>;
-  }
+        return <ClientSideHomePage initialData={data} />;
+    } catch {
+        return <div>Something went wrong</div>;
+    }
 }

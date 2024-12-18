@@ -3,15 +3,15 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
-  title: getTitle("Login"),
+    title: getTitle("Login"),
 };
 
 type Props = {
-  children: ReactNode;
+    children: ReactNode;
 };
 
 export default function AdminLoginPageLayout(props: Props) {
-  const { children } = props;
+    const { children } = props;
 
-  return children;
+    return children;
 }

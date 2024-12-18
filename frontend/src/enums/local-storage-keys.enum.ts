@@ -1,3 +1,3 @@
 export const LocalStorageKeys = {
-  auth: "auth",
+    auth: "auth",
 };
