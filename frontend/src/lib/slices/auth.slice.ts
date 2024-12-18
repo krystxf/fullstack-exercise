@@ -19,7 +19,7 @@ const authSlice = createSlice({
   reducers: {
     login: (
       state,
-      action: PayloadAction<{ accessToken: string; expiresIn: number }>
+      action: PayloadAction<{ accessToken: string; expiresIn: number }>,
     ) => {
       const { accessToken, expiresIn } = action.payload;
       const expiresAt = Date.now() + expiresIn * 1_000;
@@ -33,7 +33,7 @@ const authSlice = createSlice({
         JSON.stringify({
           access_token: accessToken,
           expires_at: expiresAt,
-        })
+        }),
       );
     },
     logout: (state) => {

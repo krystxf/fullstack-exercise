@@ -14,7 +14,7 @@ export default async function handler(req: NextApiRequest) {
       headers: {
         "X-API-KEY": process.env.NEXT_PUBLIC_API_KEY!,
       },
-    }
+    },
   );
 }
 

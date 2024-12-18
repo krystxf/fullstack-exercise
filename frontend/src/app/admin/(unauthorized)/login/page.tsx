@@ -37,7 +37,7 @@ export default function AdminLoginPage() {
       login({
         accessToken: res.data.access_token,
         expiresIn: res.data.expires_in,
-      })
+      }),
     );
 
     toast.success("Logged in");
@@ -47,7 +47,7 @@ export default function AdminLoginPage() {
 
   return (
     <form
-      className="m-auto mt-24 flex flex-col gap-2 max-w-96"
+      className="m-auto mt-24 flex max-w-96 flex-col gap-2"
       onSubmit={handleSubmit(onSubmit)}
     >
       <label className="flex flex-col gap-1">

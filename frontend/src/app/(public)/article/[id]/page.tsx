@@ -47,7 +47,7 @@ export default async function ArticleDetailPage({ params }: Props) {
       />
 
       {article.imageId}
-      <div className="relative w-full max-h-full h-48">
+      <div className="relative h-48 max-h-full w-full">
         <Image
           src={getImageUrl(article.imageId)}
           alt={`Image for article: ${article.title}`}

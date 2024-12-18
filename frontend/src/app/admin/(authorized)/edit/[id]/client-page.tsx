@@ -59,7 +59,7 @@ export default function AdminEditClientPage(props: Props) {
 
   return (
     <>
-      <h1 className="text-4xl font-medium mb-12">Create article</h1>
+      <h1 className="mb-12 text-4xl font-medium">Create article</h1>
 
       <form className="flex flex-col gap-8" onSubmit={handleSubmit(onSubmit)}>
         <label className="flex flex-col gap-1">
@@ -84,7 +84,7 @@ export default function AdminEditClientPage(props: Props) {
         <label className="flex flex-col gap-1">
           Content
           <textarea
-            className={twMerge(inputClassName, " min-h-48")}
+            className={twMerge(inputClassName, "min-h-48")}
             {...register("content", {
               required: true,
               minLength: 10,

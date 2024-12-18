@@ -41,7 +41,7 @@ export default function AdminCreatePage() {
         <title>Create article</title>
       </Head>
 
-      <h1 className="text-4xl font-medium mb-12">Create article</h1>
+      <h1 className="mb-12 text-4xl font-medium">Create article</h1>
 
       <form className="flex flex-col gap-8" onSubmit={handleSubmit(onSubmit)}>
         <label className="flex flex-col gap-1">

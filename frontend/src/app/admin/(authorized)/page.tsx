@@ -19,7 +19,7 @@ export default function AdminEditPage() {
   }
 
   return (
-    <div className="max-w-screen-lg mx-auto py-4 px-8">
+    <div className="mx-auto max-w-screen-lg px-8 py-4">
       {isLoading ? (
         <div>Loading</div>
       ) : (

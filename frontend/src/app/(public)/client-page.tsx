@@ -15,7 +15,7 @@ export function ClientSideHomePage(props: Props) {
 
   return (
     <>
-      <h1 className="text-4xl font-medium mb-12">Recent articles</h1>
+      <h1 className="mb-12 text-4xl font-medium">Recent articles</h1>
 
       <div className="flex flex-col gap-8">
         {data.items.map((article) => (

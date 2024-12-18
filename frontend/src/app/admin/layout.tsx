@@ -21,7 +21,7 @@ export default function AdminLayout(props: Props) {
     <>
       <AdminNavbar />
 
-      <div className="w-full flex justify-center py-4 px-8 min-h-screen">
+      <div className="flex min-h-screen w-full justify-center px-8 py-4">
         <main className="w-full max-w-screen-lg">{children}</main>
       </div>
     </>

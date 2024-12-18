@@ -1,6 +1,6 @@
 export function serverSideFetchApi(
   path: string,
-  init?: RequestInit
+  init?: RequestInit,
 ): Promise<Response> {
   const url = new URL(path, process.env.NEXT_PUBLIC_API_URL);
 

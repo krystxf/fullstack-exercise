@@ -17,10 +17,10 @@ export function AdminNavbar() {
   }
 
   return (
-    <div className="w-full flex justify-center border-b border-b-neutral-200 py-4 px-8 sticky top-0 bg-white z-10">
-      <nav className="w-full max-w-screen-lg flex justify-between">
-        <div className="flex gap-2 items-center">
-          <div className="w-full max-w-screen-lg flex justify-between">
+    <div className="sticky top-0 z-10 flex w-full justify-center border-b border-b-neutral-200 bg-white px-8 py-4">
+      <nav className="flex w-full max-w-screen-lg justify-between">
+        <div className="flex items-center gap-2">
+          <div className="flex w-full max-w-screen-lg justify-between">
             <Link href="/" className="text-lg font-semibold">
               Cat Blog
             </Link>

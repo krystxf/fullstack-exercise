@@ -11,10 +11,10 @@ export function Button(props: Props) {
   return (
     <button
       className={twMerge(
-        "mt-2 active:scale-[0.99] transition-all ease-in-out text-white rounded-md px-4 py-2",
+        "mt-2 rounded-md px-4 py-2 text-white transition-all ease-in-out active:scale-[0.99]",
         variant === "primary" && "bg-indigo-500 hover:bg-indigo-600",
         variant === "danger" && "bg-red-500 hover:bg-red-600",
-        className
+        className,
       )}
       {...rest}
     />
