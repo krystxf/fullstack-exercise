@@ -6,40 +6,40 @@
 export type LoginBody = { username: string; password: string };
 
 export type LoginResponse = {
-  access_token: string;
-  expires_in: number;
-  token_type: string;
+    access_token: string;
+    expires_in: number;
+    token_type: string;
 };
 
 export type ArticleDetail = {
-  articleId: string;
-  title: string;
-  perex: string;
-  content: string;
-  imageId: string;
-  createdAt: string;
-  lastUpdatedAt: string;
-  comments: {
-    commentId: string;
     articleId: string;
-    author: string;
+    title: string;
+    perex: string;
     content: string;
-    postedAt: string;
-    score: number;
-  }[];
+    imageId: string;
+    createdAt: string;
+    lastUpdatedAt: string;
+    comments: {
+        commentId: string;
+        articleId: string;
+        author: string;
+        content: string;
+        postedAt: string;
+        score: number;
+    }[];
 };
 
 export type ArticlesResponse = {
-  items: ArticleDetail[];
+    items: ArticleDetail[];
 };
 
 export type CreateArticleBody = {
-  title: string;
-  perex: string;
-  imageId?: string;
-  content: string;
+    title: string;
+    perex: string;
+    imageId?: string;
+    content: string;
 };
 
 export type EditArticleBody = CreateArticleBody & {
-  articleId: string;
+    articleId: string;
 };

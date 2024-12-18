@@ -2,21 +2,21 @@ import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 
 type Props = {
-  children: React.ReactNode;
+    children: React.ReactNode;
 };
 
 export default function RootLayout(props: Props) {
-  const { children } = props;
+    const { children } = props;
 
-  return (
-    <>
-      <Navbar />
+    return (
+        <>
+            <Navbar />
 
-      <div className="w-full flex justify-center py-4 px-8 min-h-screen">
-        <main className="w-full max-w-screen-lg">{children}</main>
-      </div>
+            <div className="flex min-h-screen w-full justify-center px-8 py-4">
+                <main className="w-full max-w-screen-lg">{children}</main>
+            </div>
 
-      <Footer />
-    </>
-  );
+            <Footer />
+        </>
+    );
 }
